@@ -1,14 +1,14 @@
 """Exports a pytorch *.pt model to *.onnx format
 
 Usage:
-    $ export PYTHONPATH="$PWD" && python models/onnx_export.py --weights ./weights/yolov5s.pt --img 640 --batch 1
+    $ export PYTHONPATH="$PWD" && python models/onnx_export.py --weights ./weights/yolov5s.pt --img 640 640 --batch 1
 """
 
 import argparse
-
+import torch
 import onnx
 
-from models.common import *
+# from models.common import *
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -23,7 +23,7 @@ if __name__ == '__main__':
     img = torch.zeros((opt.batch_size, 3, *opt.img_size))  # image size, (1, 3, 320, 192) iDetection
 
     # Load pytorch model
-    google_utils.attempt_download(opt.weights)
+    # google_utils.attempt_download(opt.weights)
     model = torch.load(opt.weights, map_location=torch.device('cpu'))['model'].float()
     model.eval()
     model.fuse()

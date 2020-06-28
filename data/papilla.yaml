@@ -1,0 +1,41 @@
+# Dataset should be placed next to yolov5 folder:
+#   /parent_folder
+#     /papilla
+#     /yolov5
+
+# Dataset organization:
+#   /papilla
+#     /images
+#       /train
+#         img0.jpg
+#         img1.jpg
+#         ...
+#       /val
+#         img0.jpg
+#         img1.jpg
+#         ...
+#     /labels
+#       /train
+#         img0.txt
+#         img1.txt
+#         ...
+#       /val
+#         img0.txt
+#         img1.txt
+#         ...
+
+# Labels:
+#   - One row per object
+#   - Each row is class x_center y_center width height
+#   - Box coordinates must be in normalized xywh format (from 0 - 1). If your boxes are in pixels, divide x_center and width by image width, and y_center and height by image height
+#   - Class numbers are zero-indexed (start from 0)
+
+# train and val datasets (image directory)
+train: ../coco_papilla/images/train/
+val: ../coco_papilla/images/val/
+
+# number of classes
+nc: 1
+
+# class names
+names: ['papilla']
